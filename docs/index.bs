@@ -2876,7 +2876,7 @@ spec: webappsec-referrer-policy; urlPrefix: https://w3c.github.io/webappsec-refe
       1. Let |startFailed| be false.
       1. Let |agent| be the result of [=obtain a service worker agent|obtaining a service worker agent=], and run the following steps in that context:
           1. Let |agentCluster| be the [=agent cluster=] which contains |agent|.
-          1. If |workerGlobalScope|'s [=WorkerGlobalScope/embedder policy=] is "<code>[=embedder policy value/require-corp=]</code>", then set |agentCluster|'s [=agent cluster/cross-origin isolation mode=] to "<code>[=cross-origin isolation mode/logical=]</code>" or "<code>[=cross-origin isolation mode/concrete=]</code>". The one chosen is implementation-defined.
+          1. If |workerGlobalScope|'s [=WorkerGlobalScope/embedder policy=] is "<code>[=embedder policy value/require-corp=]</code>", then set |agentCluster|'s [=agent-cluster-cross-origin-isolation|cross-origin isolation mode=] to "<code>[=cross-origin isolation mode/logical=]</code>" or "<code>[=cross-origin isolation mode/concrete=]</code>". The one chosen is implementation-defined.
           1. Let |realmExecutionContext| be the result of [=create a new JavaScript realm|creating a new JavaScript realm=] given |agent| and the following customizations:
               * For the global object, create a new {{ServiceWorkerGlobalScope}} object. Let |workerGlobalScope| be the created object.
           1. Set |serviceWorker|'s [=service worker/global object=] to |workerGlobalScope|.
@@ -2897,7 +2897,7 @@ spec: webappsec-referrer-policy; urlPrefix: https://w3c.github.io/webappsec-refe
               : The [=environment settings object/embedder policy=]
               :: Return |workerGlobalScope|'s [=WorkerGlobalScope/embedder policy=].
               : The [=environment settings object/cross-origin isolated capability=]
-              :: Return whether |agentCluster's| [=agent cluster/cross-origin isolation mode=] is not "<code>[=cross-origin isolation mode/none=]</code>".
+              :: Return whether |agentCluster's| [=agent-cluster-cross-origin-isolation|cross-origin isolation mode=] is "<code>[=cross-origin isolation mode/concrete=]</code>".
 
           1. Set |settingsObject|'s [=environment/id=] to a new unique opaque string, [=creation URL=] to |serviceWorker|'s [=service worker/script url=], [=environment/top-level creation URL=] to null, [=environment/top-level origin=] to an [=implementation-defined=] value, [=environment/target browsing context=] to null, and [=active service worker=] to null.
           1. Set |workerGlobalScope|'s [=WorkerGlobalScope/url=] to |serviceWorker|'s [=service worker/script url=].
